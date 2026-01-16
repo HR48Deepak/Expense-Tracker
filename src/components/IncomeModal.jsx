@@ -33,7 +33,7 @@ function IncomeModal({ onClose }) {
 
     return (
         <div className='fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50'>
-            <div className="bg-[#efefef] p-8 rounded-4xl w-100 text-black shadow-2xl">
+            <div className="relative overflow-hidden bg-[#efefef] p-8 rounded-4xl w-100 text-black shadow-2xl">
                 
                
                 {success && (
