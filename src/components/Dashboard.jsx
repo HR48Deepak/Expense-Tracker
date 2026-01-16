@@ -5,6 +5,7 @@ import ExpenseModal from "./ExpenseModal";
 import TransactionList from "./TransactionList";
 import IncomeModal from "./IncomeModal";
 import ExpenseBarChart from "./ExpenseBarChart";
+import { GiExpense } from "react-icons/gi";
 
 function Dashboard() {
   const { balance, expenses } = useSelector((state) => state.expense);
@@ -30,7 +31,7 @@ function Dashboard() {
   return (
     <>
       <div className="bg-slate-500 p-4 md:p-10 text-white min-h-screen">
-        <h1 className="mb-8 font-bold text-2xl">Expense Tracker</h1>
+        <h1 className="mb-8 flex gap-2 font-bold text-3xl "><GiExpense className="size-15 relative text-orange-400 bottom-5"/> Expense Tracker </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {/* wallet */}
           <div className="p-8 rounded-2xl bg-slate-700 shadow-lg text-center">
