@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MdOutlineCancel, MdOutlineModeEdit } from "react-icons/md";
+import { MdOutlineCancel, MdOutlineModeEdit, MdSearch } from "react-icons/md"; // Added MdSearch
 import { useDispatch } from "react-redux";
 import { deleteExpense } from "../redux/expenseSlice";
 import { FaPizzaSlice, FaExclamationTriangle } from "react-icons/fa";
@@ -8,6 +8,12 @@ function TransactionList({ transactions, onEdit }) {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredTransactions = transactions.filter((t) =>
+    t.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const openDeleteModal = (id) => {
     setSelectedId(id);
@@ -25,15 +31,28 @@ function TransactionList({ transactions, onEdit }) {
   return (
     <>
       <div className="bg-white rounded-4xl p-6 text-black shadow-lg h-full relative">
-        <h3 className="italic font-bold text-xl mb-6">Recent Transactions</h3>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <h3 className="italic font-bold text-xl">Recent Transactions</h3>
+          
+          <div className="relative flex-1 max-w-xs">
+            <MdSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl" />
+            <input
+              type="text"
+              placeholder="Search transactions..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-200 transition"
+            />
+          </div>
+        </div>
 
-        {transactions.length === 0 ? (
+        {filteredTransactions.length === 0 ? (
           <div className="text-xl text-gray-400 italic flex items-center justify-center h-40">
-            No Transactions
+            {searchQuery ? "No matching results" : "No Transactions"}
           </div>
         ) : (
           <div className="max-h-64 overflow-y-auto space-y-4 p-2">
-            {transactions.map((t) => (
+            {filteredTransactions.map((t) => (
               <div
                 key={t.id}
                 className="flex justify-between items-center border-b border-gray-100 pb-3"
@@ -77,7 +96,6 @@ function TransactionList({ transactions, onEdit }) {
           </div>
         )}
       </div>
-
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl transform transition-all">
