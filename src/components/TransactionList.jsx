@@ -59,7 +59,7 @@ function TransactionList({ transactions, onEdit }) {
               >
                 <div className="flex items-center gap-4 min-w-0">
                   <div className="bg-gray-100 p-3 rounded-full text-xl shrink-0">
-                    <FaPizzaSlice />
+                    <FaPizzaSlice className="text-yellow-400"/>
                   </div>
                   <div className="flex flex-col md:flex-row md:items-center md:gap-4 min-w-0">
                     <p className="font-semibold truncate w-12 md:w-auto">
