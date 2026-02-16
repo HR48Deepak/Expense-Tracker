@@ -35,7 +35,7 @@ function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {/* wallet */}
           <div className="p-8 rounded-2xl bg-slate-700 shadow-lg text-center">
-            <h2 className="text-xl ">
+            <h2 className="text-xl mt-10  ">
               Wallet Balance:
               <span className="text-green-300 font-bold">₹{balance}</span>
             </h2>
@@ -48,7 +48,7 @@ function Dashboard() {
           </div>
           {/* expense  */}
           <div className="p-8 rounded-2xl bg-slate-700 shadow-lg text-center">
-            <h2 className=" text-xl">
+            <h2 className=" text-xl mt-10">
               Expenses:
               <span className="text-orange-300 font-bold">₹{totalExpense}</span>
             </h2>
