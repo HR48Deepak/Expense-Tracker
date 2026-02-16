@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip,Legend } from 'recharts';
 
 const COLORS = ['#A020F0', '#F3B755', 'red'];
 const EMPTY_COLOR = ['grey']; 
@@ -11,7 +11,7 @@ function ExpensePieChart({ data }) {
   const emptyData = [{ name: "No Expenses", value: 1 }];
 
   return (
-    <div className="h-48 w-full flex flex-col items-center justify-center relative">
+    <div className="h-60 w-full flex flex-col items-center justify-center relative">
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
@@ -31,6 +31,7 @@ function ExpensePieChart({ data }) {
             )}
           </Pie>
           {hasData && <Tooltip cursor={{ fill: 'transparent' }} />}
+          <Legend/>
         </PieChart>
       </ResponsiveContainer>
       {!hasData && (
